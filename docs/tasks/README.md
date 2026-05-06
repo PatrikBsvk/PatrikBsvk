@@ -19,12 +19,32 @@ Each task is a self-contained `.md` file with everything a coding agent needs:
 
 | ID | Name | Goal | Tasks |
 |---|---|---|---|
-| **M1** | Foundation | Repo, Next.js app, Supabase, auth, layout | T001–T010 |
-| **M2** | Wizard + Builder Agent | Templates, wizard UI, first agent | T011–T020 |
-| **M3** | Live preview + UI Editor | WebContainers, click-to-edit | T021–T030 |
-| **M4** | Deploy & subdomains | Vercel API integration | T031–T035 |
-| **M5** | Credits & Stripe | Billing, kreditní counter | T036–T042 |
-| **M6** | Polish & soft launch | Coach, smart errors, mobile preview | T043–T050 |
+| **M1** | Foundation | Repo, Next.js, Supabase, auth, agent runner, marketing landing | T001–T006 |
+| **M2** | Wizard + Builder Agent | Templates, wizard UI, Builder Agent, project workspace | T007–T013 |
+| **M3** | Click-to-edit | WebContainers preview, UI Editor, Variant agent, auto-save | T014–T020 |
+| **M4** | Deploy & subdomains | Vercel API integration, generated-app DB strategy (ADR-002) | T021–T025 |
+| **M5** | Credits, billing, marketplace | Stripe subscriptions, kreditní counter, public profiles, Marketplace listings | T026–T035 |
+| **M6** | Polish & soft launch | Coach interactions, smart errors, mobile preview, CI, Sentry, PostHog, beta launch | T036–T045 |
+
+## Active queue (Ready)
+
+- **T001** — Init monorepo
+- **T002** — Supabase setup (after manual project creation)
+- **T003** — DB schema + RLS + seed
+- **T004** — App shell + auth + brand tokens
+- **T005** — Agent runner + Coach
+- **T006** — Marketing landing page
+- **T007** — Wizard UI shell (M2)
+
+## Coming next (PM is drafting)
+
+- **T008** — Templates package + Landing template scaffold
+- **T009** — Builder Agent (wires Wizard payload → file map)
+- **T010** — Project workspace shell (3-column editor)
+- **T011** — WebContainers live preview
+- **T012** — UI Editor agent + click-to-edit
+- **T013** — Variant agent (3-options picker)
+- T014+ — see milestones above
 
 ## Status legend
 - **Ready** — fully specified, can be picked up
