@@ -74,40 +74,50 @@
 | `--ink-7` | `#FAFAFA` | Background. |
 | `--paper` | `#FFFFFF` | Pure white surface. |
 
-### Signature accent — Amber Gold
+### Signature accent — Royal Violet
 | Token | Hex | Usage |
 |---|---|---|
-| `--gold-400` | `#FBBF24` | Light/hover state |
-| `--gold-500` | `#F59E0B` | **Brand primary.** CTAs, logo, focus rings. |
-| `--gold-600` | `#D97706` | Pressed/active state |
-| `--gold-700` | `#B45309` | Strong on light bg, accessible text on white |
+| `--violet-400` | `#A78BFA` | Light/hover state, glow |
+| `--violet-500` | `#8B5CF6` | Hover, secondary accent |
+| `--violet-600` | `#7C3AED` | **Brand primary.** CTAs, logo, focus rings. |
+| `--violet-700` | `#6D28D9` | Pressed/active state |
+| `--violet-800` | `#5B21B6` | Strong on light bg, accessible text on white |
+| `--violet-950` | `#2E1065` | Deep tone, dark-mode panels |
 
-**Why amber:** semantically tied to *bell* (golden bell), differentiates from purple/blue AI tools, "gold = premium" reinforces positioning, warm = approachable for non-tech audience.
+**Why violet + black:** founder direction. Premium, modern, tech-forward (Linear, Anthropic, Stripe-grade signature). Differentiates from base44 (lighter, friendlier) by leaning serious/luxurious. Violet on near-black communicates "premium AI tool" instantly.
 
 ### Semantic
 | Token | Hex | Usage |
 |---|---|---|
 | `--success` | `#10B981` | Saved, deployed, paid |
-| `--warning` | `#F59E0B` | (alias of `--gold-500`) approaching credit limit |
+| `--warning` | `#F59E0B` | Approaching credit limit |
 | `--danger` | `#EF4444` | Errors, destructive |
 | `--info` | `#3B82F6` | Tips, neutral notices |
 
-### Signature gradient
-- **Hero gradient (light):** `linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 50%, #FDE68A 100%)`
-- **Hero gradient (dark):** `linear-gradient(135deg, #0A0A0A 0%, #1F1408 50%, #3B2510 100%)`
-- **Accent gradient (CTAs):** `linear-gradient(135deg, #F59E0B 0%, #D97706 100%)`
+### Signature gradients
+- **Hero gradient (light):** `linear-gradient(135deg, #FAFAFA 0%, #F3EEFE 50%, #E9D5FF 100%)` — subtle violet wash on light backgrounds
+- **Hero gradient (dark):** `linear-gradient(135deg, #0A0A0A 0%, #1B0F3F 60%, #2E1065 100%)` — deep black to violet
+- **Accent gradient (CTAs):** `linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%)`
+- **Premium glow:** `box-shadow: 0 0 40px rgba(124, 58, 237, 0.35)` — used sparingly on hero CTA, brand mark
 
-### Dark mode
-- Background: `#0A0A0A`
-- Surface: `#171717`
+### Dark mode (the hero look)
+Dark mode is **first-class**, not an afterthought. The premium feel of Vibell lives in the dark theme; the marketing site hero defaults to dark.
+
+- Background: `#0A0A0A` (true near-black)
+- Surface: `#0F0F12` (slightly elevated)
+- Surface raised: `#17141F` (cards on dark)
 - Border: `#262626`
-- Text: `#FAFAFA`
-- Accent retained: `--gold-500`
+- Border violet-tinted: `rgba(139, 92, 246, 0.15)` (subtle purple line on cards)
+- Text primary: `#FAFAFA`
+- Text secondary: `#A3A3A3`
+- Accent retained: `--violet-600`
+- Glow halo on focused/active CTAs: `--violet-500` with 30% opacity
 
 ### Accessibility
 - All text/background combos WCAG AA minimum (4.5:1 normal, 3:1 large).
-- Gold-500 on white is **not** AA for body text — use `--gold-700` for text on white.
-- Always test in dark mode.
+- `--violet-600` on white is borderline AA for body — use `--violet-700` for text on white.
+- `--violet-400` is the readable choice on `#0A0A0A`.
+- Always test in both light and dark.
 
 ## 6. Typography
 
@@ -186,10 +196,13 @@ Geist is Vercel's open-source geometric sans. Premium feel, excellent legibility
 ### Buttons (primary spec)
 | Variant | Background | Border | Text | Hover |
 |---|---|---|---|---|
-| Primary | `--gold-500` gradient | none | `--ink-0` | `--gold-600` gradient |
-| Secondary | `--paper` | `1px solid --ink-5` | `--ink-1` | `--ink-6` bg |
+| Primary (light) | violet gradient | none | `--paper` | shift to violet-700 |
+| Primary (dark) | violet gradient + glow | none | `--paper` | brighter glow |
+| Secondary | `--paper` (or `--ink-1` dark) | `1px solid --ink-5` | `--ink-1` | `--ink-6` bg |
 | Ghost | transparent | none | `--ink-1` | `--ink-6` bg |
 | Danger | `--danger` | none | `--paper` | `--danger` darker |
+
+Primary CTA always uses the violet gradient (`#8B5CF6 → #6D28D9`). On dark mode it has a soft glow (`box-shadow: 0 0 24px rgba(124,58,237,0.4)`). This is the single most recognizable Vibell visual — keep it consistent.
 
 ## 10. Imagery & illustrations
 
@@ -219,11 +232,15 @@ Geist is Vercel's open-source geometric sans. Premium feel, excellent legibility
 ## 13. Quick reference card
 
 ```
-PRIMARY: gold #F59E0B
-INK:     #0A0A0A → #FAFAFA
-RADIUS:  8 / 12 / 999
-TYPE:    Geist Sans + Geist Mono
-SPACING: 4px base
-EASING:  cubic-bezier(0.16, 1, 0.3, 1)
-EMOJI:   no
+PRIMARY:   violet  #7C3AED   (CTAs, focus, brand)
+GLOW:      violet  rgba(124,58,237,0.35)  (hero CTA on dark)
+INK:       #0A0A0A → #FAFAFA
+GRADIENT:  #8B5CF6 → #6D28D9  (primary CTA)
+HERO BG:   #0A0A0A → #1B0F3F → #2E1065  (dark hero)
+RADIUS:    8 / 12 / 999
+TYPE:      Geist Sans + Geist Mono
+SPACING:   4px base
+EASING:    cubic-bezier(0.16, 1, 0.3, 1)
+DARK:      first-class, not afterthought
+EMOJI:     no
 ```

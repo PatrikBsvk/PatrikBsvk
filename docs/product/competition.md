@@ -4,12 +4,13 @@
 
 ### base44 (primary inspiration)
 - **Strengths:** Simple UI, decent onboarding for non-devs.
-- **Weaknesses (our opportunities):**
-  - [TBD: founder to fill in specific frustrations from using base44]
-  - Limited click-to-edit (compared to Vibell vision)
-  - [TBD: pricing transparency]
-  - [TBD: marketplace / community]
-- **Vibell differentiator:** Stronger guided wizard, click-to-edit with icons, marketplace with revenue share.
+- **Weaknesses (our opportunities, founder-confirmed):**
+  - **No real guided system** — user is left to figure things out, no structured progression.
+  - **No social / community layer** — every creator is alone, no portfolio, no sharing, no marketplace.
+  - Limited click-to-edit compared to Vibell vision.
+- **Vibell two-pillar differentiation (PRIMARY):**
+  1. **Guide System** — structured wizard (4 steps), templates, mockups before code, Coach interactions, transparent costs. The user is never lost.
+  2. **Social Network** — every user has a public portfolio (`vibell.app/@username`), can publish projects to the Marketplace, follow other creators, like/clone, earn from sales (70/30 or 80/20 split). Network effects → moat.
 
 ### Lovable
 - **Strengths:** Wide brand reach, popular on Twitter/X, viral demos.
@@ -39,7 +40,11 @@
 - **Framer** — strong design, weak app logic.
 
 ## Positioning statement
-> For non-programmers with an idea, **Vibell** is a guided AI app builder that turns ideas into published web apps in 30 minutes — without a single line of code, terminal, or DevOps. Unlike Lovable and Bolt, you don't write prompts; you click through templates, mockups, and visual edits while AI agents handle the rest.
+> For non-programmers with an idea, **Vibell** is a guided AI app builder with a creator network. You never face a blank prompt — Vibell walks you through it, ships your app to a real URL, and connects you with other creators in the Vibell Store. Unlike Lovable, Bolt, and base44, Vibell combines a **structured guide system** with a **social layer** so creators learn faster, ship faster, and earn from their work.
+
+## Two-pillar moat
+1. **Guide System** — every step is curated. Templates, wizard, click-to-edit, Coach. Reduces "blank canvas paralysis" that kills non-technical users on Lovable/Bolt.
+2. **Social Network** — `vibell.app/@username` portfolio, follow/like/clone, Marketplace with revenue share. Each new creator makes Vibell more valuable for the next one (classic network effect that base44 lacks).
 
 ## Tagline candidates (EN)
 1. *Have an idea. Vibell builds it.*
