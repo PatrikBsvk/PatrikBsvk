@@ -15,6 +15,7 @@ Predictable pricing for users + protection against runaway API costs for Vibell.
 
 ## Action → credit cost
 
+### Smart Mode (default — locked layout, content edits)
 | Action | Credits | Internal cost (USD, est.) |
 |---|---|---|
 | New project from template | 5 | $0.07 |
@@ -26,6 +27,23 @@ Predictable pricing for users + protection against runaway API costs for Vibell.
 | Voice → wizard | 2 | $0.03 |
 | Auto-save snapshot | 0 | (free) |
 | Deploy / publish | 0 | (free) |
+
+### Studio Mode (paid layout freedom — see `docs/design/studio-mode.md`)
+| Action | Credits | Internal cost (USD, est.) |
+|---|---|---|
+| Add section (beyond template whitelist) | 8 | $0.12 |
+| Remove section | 5 | $0.07 |
+| Reorder sections | 3 | $0.04 |
+| Edit layout JSX | 8–15 | $0.12–$0.22 |
+| Custom CSS | 5 | $0.07 |
+| Add custom page | 15 | $0.22 |
+
+### Plan-level Studio access
+- Free: 3 Studio edits free, then locked
+- Basic: 10 Studio edits/month included
+- Standard: unlimited at standard credit cost
+- Pro: unlimited, **20 % discount** on Studio actions
+- Team: Pro benefits + collaborative Studio (phase 3)
 
 ## Rules
 

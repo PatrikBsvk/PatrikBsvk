@@ -27,6 +27,7 @@
 - Logo wordmark (left, links to dashboard)
 - Project name (editable inline)
 - Save indicator: "Saved Xs ago" or "Saving…" with a small dot animation
+- **Mode toggle:** `Smart ⟶ Studio` slide control (see `docs/design/studio-mode.md`). When in Studio Mode: violet "STUDIO" badge with subtle glow next to the project name.
 - Share button (copies project link)
 - **Publish** — primary CTA, violet gradient, top-right
 

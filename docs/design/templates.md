@@ -298,8 +298,10 @@ create table bookings (
 
 ## Template development principles
 
-### 1. Layout is locked, content is free
-Builder Agent never edits JSX layout files. Content lives in `site-config.ts` (or DB for dynamic templates). This makes Builder's job small + safe.
+### 1. Layout is locked, content is free (in Smart Mode)
+Builder Agent never edits JSX layout files **in Smart Mode** (the default). Content lives in `site-config.ts` (or DB for dynamic templates). This makes Builder's job small + safe.
+
+**Escape hatch — Studio Mode:** Users who need layout changes can switch a project to Studio Mode and pay per-action credits. See `docs/design/studio-mode.md`. Templates do not need any special accommodation for Studio Mode — the Studio Agent works directly on the file map.
 
 ### 2. Lucide-only icons
 Builder picks icon names from a curated whitelist (~80 names). Never generates SVG. Keeps output deterministic.
