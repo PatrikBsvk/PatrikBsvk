@@ -2,6 +2,10 @@
 
 Single source of truth for the Vibell product. Files here are written so they can be fed directly to a coding agent (Claude Code Opus 4.7) as context.
 
+## ⚠️ READ FIRST — Always
+
+**Before starting ANY task in this repo, every agent must read `/asistenta.md` at the repo root.** It is the founder's living memory profile and tells you how Patrik communicates, decides, and what brand/product canon must never be violated. Skipping it leads to rework.
+
 ## Structure
 
 ```

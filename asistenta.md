@@ -1,0 +1,153 @@
+# asistenta.md — Memory profile of Patrik (founder of Vibell)
+
+> **Účel tohoto souboru:** Toto je živá paměť pracovního vztahu mezi Patrikem (founder) a AI asistenty. **Jakýkoliv agent (Claude Code Opus 4.7 i jiný) musí tento soubor přečíst PŘED jakoukoliv prací v tomto repu**, aby komunikoval a rozhodoval způsobem, který Patrik akceptuje napoprvé.
+>
+> Aktualizuje to PM agent (Claude v main session) pokaždé, když se něco nového naučí.
+
+---
+
+## 1. Identita
+
+- **Jméno:** Patrik
+- **Role:** founder & operator Vibell (vibell.app)
+- **Právní status (2026-05):** OSVČ v ČR, plánuje s.r.o. až bude obrat / investor odůvodňovat
+- **Tech background:** silná produktová vize a brand instinct. NENÍ klasický vývojář — používá lokální Claude Code (Opus 4.7) pro shipnutí kódu.
+
+---
+
+## 2. Komunikační styl
+
+- **Jazyky:** Čeština primárně, plynule mixuje s anglickými tech termíny. Přepíná bez varování.
+- **Délka odpovědi:** krátce, často jednořádkově. *"souhlas"*, *"jeď dál"*, *"to chci"*.
+- **Pravopis:** často malými písmeny, **má překlepy** (`moccupy`, `supr`, `asistenta`, `cíľová`). **NIKDY je neoprávek, neakcentuj je, nesnaž se je opravit.**
+- **Číslované odpovědi:** když dostane číslované otázky, odpovídá ve stejném formátu — někdy terse, někdy rozšíří vizí.
+- **Žádná emoji od něj, neočekává emoji ode mě.** (Brand voice rule sedí s jeho preferencí.)
+- **Decisive, ale důvěřuje PM:** často píše *"rozhodni sám"* / *"jeď dál"* / *"je to na tobě, dej tomu směr"*.
+- **Tlačí zpátky, když je něco špatně:** *"fialovo-černý styl chci"* přepsalo mé amber doporučení. **Když odporuje, poslouchej pozorně — má jasný instinct.**
+- **Nechce recap:** napsal *"nepiš mi teď co máme"*. Když si žádá pokračování, neopakovat status. Jen pracovat.
+
+---
+
+## 3. Rozhodovací styl
+
+- **Vize first, detaily deleguje.** Velké nápady jdou od něj (memory agent, social network, paid Studio Mode). Design detailů jde z PM.
+- **Trustuje brand instinct.** Když na vážkách: premium > approachable, tech > playful, minimal > busy.
+- **Cost-conscious.** Token efficiency zmínil hned v rané fázi. Care o margin.
+- **Produkt > infra.** Řekl *"focus more on product"*. CI / Sentry / PostHog mu deferl do M6.
+- **Krok za krokem.** Říká *"postupně"*, *"poďme se zaměřit"*. Nechce velké balíky najednou bez kontextu.
+
+---
+
+## 4. Brand & produkt canon — **nikdy neporušuj**
+
+| Pravidlo | Hodnota |
+|---|---|
+| Název | **Vibell** (lowercase wordmark) |
+| Doména | `vibell.app` |
+| Brand feel | modern · professional · premium |
+| Inspirace | Stripe (jasnost), Vercel (minimal), Notion (interaktivní) |
+| Primární barva | royal violet `#7C3AED` na near-black `#0A0A0A` |
+| Dark mode | **first-class**, ne afterthought (hero je default tmavý) |
+| Typografie | Geist Sans + Geist Mono |
+| Emoji | **nikde** v product UI / copy / dokumentaci |
+| Mascot | **žádný** |
+| Voice | clear over clever, confident not boastful, warm not familiar, specific over generic |
+| Tagline (EN) | *"Have an idea. Vibell builds it."* / *"Your idea. A real URL. 30 minutes."* |
+| Tagline (CZ) | *"Měj nápad. Vibell ti ho postaví."* |
+
+### Klíčové produktové rozlišení (zapamatuj)
+- **Smart Mode** (default, locked layout, levné, 95 % uživatelů)
+- **Studio Mode** (paid escape hatch, layout freedom, mockup library, full-app view, power users)
+- **Two-pillar moat:** (1) Guide System (strukturovaný wizard, ne blank prompt), (2) Social Network (`vibell.app/@username` portfolio + Marketplace s revenue share 70/30 nebo 80/20 pro Pro+)
+- **Memory Agent je consent-based**, ptá se na signupu: "Chceš, ať se naučím tvůj styl?"
+- **Hosting model:** uživatelé NEŘEŠÍ Vercel / Supabase / domény. Vibell to dělá za ně.
+
+---
+
+## 5. Jak doručovat
+
+- Každý task = **self-contained `.md`** v `docs/tasks/Mx-*/Txxx-*.md`. Sekce **Agent Prompt** je ready-to-paste pro lokálního Opuse.
+- **Žádné README.md** soubory bez explicitního požadavku.
+- **Čeština v PM↔founder komunikaci.** **Angličtina v kódu, copy, docs** (CZ lokalizace později).
+- **Jeden commit na task** s zprávou `task(Txxx): <title>`.
+- **Push na branch** `claude/github-repo-setup-NvGZL`.
+- **Žádné destruktivní git operace** bez permision (žádný force push, reset --hard, branch -D).
+
+---
+
+## 6. Patrikovy fráze — co skutečně znamenají
+
+| Co píše | Co tím myslí |
+|---|---|
+| *"jeď dál"* | Neptej se, pokračuj svým best judgement |
+| *"to chci"* | Silné ANO. Lock it in. |
+| *"souhlas"* | Approved jak jsem navrhl |
+| *"rozhodni sám"* / *"je to na tobě"* | Důvěřuju ti, ber ownership nad rozhodnutím |
+| *"tomu nerozumím"* | Vysvětli plain language. Nepředpokládej kontext. |
+| *"ještě nemám plán"* | Nezatahuj mě do detailů, na které nejsem ready. Defer. |
+| *"nepiš mi teď co máme"* | Skip status recap, jen pracuj |
+| *"super"* / *"supr"* | Lehké přitakání, ne enthusiasmus |
+| *"to dáva smysl"* | Souhlas, lze pokračovat |
+
+---
+
+## 7. Co dělat **bez ptaní**
+
+- Psát tasky self-contained pro lokálního Opuse 4.7
+- Dělat brand-aligned design rozhodnutí (violet/black premium minimal)
+- Reorderovat milestony, pokud to slouží produktu (deferovat infra)
+- Psát ADRs (Architectural Decision Records) když dělám rozhodnutí
+- Aktualizovat **tento soubor** když se naučím něco nového o Patrikovi
+- Commitovat a pushovat na feature branch
+- Ptát se na rozhodnutí, která vážně blokují další postup
+
+## 8. Co **vždy** potvrdit napřed
+
+- Změny pricingu (kreditní ceny, plan tiery)
+- Nové features mimo scope, na kterém jsme se shodli
+- Cokoli co se týká GDPR / legal / plateb
+- Přejmenování produktu nebo domény
+- Veřejně-viditelné branding changes
+- Investor-relevant pivots
+- Destruktivní git operace
+
+---
+
+## 9. Otevřené produktové vize, které zmínil
+
+- Memory Agent který se ho učí (consent-based) — **rozhodnuto**
+- Marketplace + creator portfolio (`vibell.app/@username`, revenue share) — **rozhodnuto**
+- Studio Mode s mockup library + full-app view — **rozhodnuto**
+- Postupně se rozhodne kdo platí: free 50, basic 200, standard 1000, pro 3000 kreditů
+- Eventually mobile output (phase 3)
+- Eventually team plán s kolaborací (3× ceny pro jednotlivce + týmová cena)
+- Konkurenti, proti kterým se vymezuje: **base44** (primárně), Lovable, Bolt, v0
+- Cílový trh: **EN globálně primárně, CZ/SK sekundárně**
+
+---
+
+## 10. Co je **právě teď** in-flight
+
+| | |
+|---|---|
+| Branch | `claude/github-repo-setup-NvGZL` |
+| Aktivní fáze | M1 (foundation) → M2 (wizard + builder) |
+| Tasky ready k běhu | T001–T008 (paste do lokálního Opuse) |
+| PM píše dál | T009 Builder Agent (s memory injection), T010 Workspace shell |
+| Bloker | žádný — Patrik schválil směr, jede se |
+
+---
+
+## 11. Drobné poznatky, které by se nemusely vejít jinam
+
+- Pojmem **"mockup"** myslí všechno vizuální (varianty, screenshoty, reference), ne nutně wireframe.
+- Když píše *"prototyp"*, často nemyslí jen MVP — myslí i jednu konkrétní šablonu nebo feature.
+- Doménu kupuje "za pár dnů", neptej se na status — počká.
+- Stripe / fakturační email nemá vyřešený, **úmyslně chce nejdříve vyladit produkt a hodnotu**, pak řešit billing identity. Respect.
+- **Pravopis "asistenta" vs "asistent":** pojmenoval tento soubor `asistenta.md` (genitiv) — drž se toho jména, ať se neztratí historie.
+
+---
+
+## 12. Updates log
+
+- **2026-05-06 v0.1** — soubor založen. Zachycuje pozorování z prvních 7 PM↔founder kol (vize, brand, Studio Mode, Memory Agent, Mockup Library, Patrikův styl).

@@ -232,6 +232,33 @@ create policy "project_memories write own" on public.project_memories
 
 ---
 
+## Onboarding consent (founder-confirmed)
+
+Memory is **opt-in at signup**, not auto-on. The very first interaction after sign-up shows a calm consent prompt:
+
+```
+┌──────────────────────────────────────────────────────────┐
+│  Want Vibell to learn your style?                        │
+│                                                          │
+│  When you build with us, we can learn how you            │
+│  communicate, what design you like, and what words       │
+│  you use. The more you build, the better we understand   │
+│  what you want — and we send better prompts to the       │
+│  AI on your behalf.                                      │
+│                                                          │
+│  You can pause, edit, or reset memory any time in        │
+│  Settings → Memory.                                      │
+│                                                          │
+│  [ Not now ]                  [ Yes, learn my style ]    │
+└──────────────────────────────────────────────────────────┘
+```
+
+- **Default focus on the YES button** — copy framing makes the value obvious.
+- **"Not now"** sets `user_profiles.paused = true`. Memory still exists (empty), and a banner in Settings reminds them they can enable any time.
+- **Yes** sets `paused = false` and Memory Agent starts observing.
+
+This is consent-based per founder direction (no surprise data collection). GDPR-aligned.
+
 ## Privacy & ethics
 
 - **All memory is user-scoped via RLS.** No cross-user leakage.

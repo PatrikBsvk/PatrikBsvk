@@ -70,6 +70,16 @@ Things you CANNOT do in Smart Mode that Studio Mode allows:
 - Coach tone shifts: more cautious — "This is a structural change. Want me to make a snapshot first?"
 - Auto-save snapshots are tagged `studio: true` for telemetry.
 
+### View toggle — Mockup vs Full app
+Studio Mode adds a **view-mode switcher** in the workspace top bar (founder direction): the user can flip between two ways of working without losing context.
+
+| View | What it shows | Best for |
+|---|---|---|
+| **Full app** (default) | The complete assembled site/app live in the iframe | Working on the real project, click-to-edit, publish |
+| **Mockups** | The Mockup Library grid takes center stage; preview moves to a side rail | Ideating, comparing, iterating on visuals before applying to project |
+
+Switching between views is **instant and preserves all panels' state**. Coach panel and Memory Agent observe both views. The Mockup Library exists only in Studio Mode (Smart Mode hides it entirely).
+
 ### Visual differentiation
 - The whole canvas gets a subtle violet vignette around the edges (peripheral signal that you are in advanced mode).
 - Element outlines on hover are still violet, but with a dashed pattern (vs solid in Smart Mode) — communicates "different rules apply here".
