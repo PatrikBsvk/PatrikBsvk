@@ -35,16 +35,18 @@ Each task is a self-contained `.md` file with everything a coding agent needs:
 - **T005** — Agent runner + Coach
 - **T006** — Marketing landing page
 - **T007** — Wizard UI shell (M2)
+- **T008** — Templates package + Landing template scaffold
+- **T009** — Builder Agent (memory injection, SSE progress, retry)
+- **T010** — Workspace shell (Smart/Studio toggle, view switcher)
 
 ## Coming next (PM is drafting)
 
-- **T008** — Templates package + Landing template scaffold
-- **T009** — Builder Agent (wires Wizard payload → file map)
-- **T010** — Project workspace shell (3-column editor)
-- **T011** — WebContainers live preview
-- **T012** — UI Editor agent + click-to-edit
+- **T011** — WebContainers live preview integration
+- **T012** — UI Editor agent + click-to-edit interaction
 - **T013** — Variant agent (3-options picker)
-- T014+ — see milestones above
+- **T014** — Memory Agent (background digest + post-wizard write upgrade)
+- **T015** — Memory settings page (`/app/settings/memory`)
+- T016+ — see milestones above
 
 ## Status legend
 - **Ready** — fully specified, can be picked up
