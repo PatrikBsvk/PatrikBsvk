@@ -15,16 +15,31 @@ Each task is a self-contained `.md` file with everything a coding agent needs:
 - **Agent Prompt** — copy-paste this into your local Claude Code
 - Definition of Done
 
-## Milestones
+## Phase 1 scope (2026-05-06 v0.3 — founder direction)
+
+**Vibell = builder for small business owners.** Phase 1 ships the Studio product end-to-end — wizard, builder, workspace, click-to-edit, Studio Mode, mockup library, deploy — with 5 SMB-focused templates (Landing, Local Business, Service Business, Booking, Shop one-pager).
+
+Marketplace, Creator Hub, memberships, referral, GitHub sync, multi-user — all DEFERRED to Phase 2+.
+
+## Milestones (Phase 1)
 
 | ID | Name | Goal | Tasks |
 |---|---|---|---|
 | **M1** | Foundation | Repo, Next.js, Supabase, auth, agent runner, marketing landing | T001–T006 |
-| **M2** | Wizard + Builder Agent | Templates, wizard UI, Builder Agent, project workspace | T007–T013 |
-| **M3** | Click-to-edit | WebContainers preview, UI Editor, Variant agent, auto-save | T014–T020 |
-| **M4** | Deploy & subdomains | Vercel API integration, generated-app DB strategy (ADR-002) | T021–T025 |
-| **M5** | Credits, billing, marketplace | Stripe subscriptions, kreditní counter, public profiles, Marketplace listings | T026–T035 |
-| **M6** | Polish & soft launch | Coach interactions, smart errors, mobile preview, CI, Sentry, PostHog, beta launch | T036–T045 |
+| **M2** | Wizard + Builder | Templates, wizard UI, Builder Agent, project workspace shell | T007–T010 |
+| **M3** | Click-to-edit | WebContainers preview, UI Editor agent, Variant agent, auto-save | T011–T016 |
+| **M4** | Deploy + SMB enablers | Vercel deploy, custom subdomains, AI Brand Designer, Smart Autofill, AI Debugger, built-in analytics, image gen | T017–T028 |
+| **M5** | Credits, billing, soft launch | Stripe subscriptions, kreditní counter, smart errors, polish, 50-user beta with SMBs | T029–T036 |
+
+## Milestones (Phase 2 — DEFERRED, designed later)
+- Marketplace + listings
+- Creator Hub (`/@username`, articles, tips, paid membership)
+- Referral / Ambassador program
+- Pre-built integrations library
+- AI SEO Assistant
+- Voice Mode
+- Continuity Coach
+- GitHub sync (Pro+)
 
 ## Active queue (Ready)
 
@@ -44,9 +59,14 @@ Each task is a self-contained `.md` file with everything a coding agent needs:
 - **T011** — WebContainers live preview integration
 - **T012** — UI Editor agent + click-to-edit interaction
 - **T013** — Variant agent (3-options picker)
-- **T014** — Memory Agent (background digest + post-wizard write upgrade)
-- **T015** — Memory settings page (`/app/settings/memory`)
-- T016+ — see milestones above
+- **T014** — Auto-save snapshots + version restore UI
+- **T015** — Memory Agent (background digest + post-wizard write upgrade)
+- **T016** — Memory settings page (`/app/settings/memory`)
+- **T017** — Local Business template (template #2)
+- **T018** — Service Business template (template #3)
+- **T019** — Booking template (template #4)
+- **T020** — Shop one-pager template (template #5)
+- T021+ — Vercel deploy, AI Brand Designer, Smart Autofill, AI Debugger, analytics, image gen
 
 ## Status legend
 - **Ready** — fully specified, can be picked up

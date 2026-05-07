@@ -5,17 +5,19 @@
 
 ---
 
-## Template registry — MVP set (5 templates)
+## Template registry — SMB MVP set (5 templates)
 
-| ID | Name | DB needed | Variants | First built |
-|---|---|---|---|---|
-| `landing` | Landing page | No | 3 | **Yes (M2)** |
-| `portfolio` | Portfolio | Yes (small) | 3 | M2 |
-| `blog` | Blog | Yes | 3 | M3 |
-| `todo` | To-do app | Yes | 2 | M3 |
-| `booking` | Booking | Yes | 2 | M3 |
+> **Scope decision (2026-05-06):** All templates serve **small business owners**. To-do and Blog templates are DEFERRED out of MVP. Replaced with templates SMBs actually need: Local Business, Service Business, Shop one-pager.
 
-After MVP, we expand to 20+ templates and let creators publish their own.
+| ID | Name | Best for | DB needed | Variants | First built |
+|---|---|---|---|---|---|
+| `landing` | Landing page (one-pager) | Launching a service or product | No | 3 | **Yes (M2)** |
+| `local-business` | Local business site (multi-page) | Restaurant, café, salon, gym, autoservis, real estate | Yes (small — hours, gallery, contact) | 3 | M2 |
+| `service-business` | Service business site | Coach, consultant, freelancer, agency | Yes (services, testimonials) | 3 | M3 |
+| `booking` | Booking system | Salon, fitness, coach, advisory — anything time-slot based | Yes | 2 | M3 |
+| `shop-onepager` | Simple shop one-pager | Drobní e-shopáři with 1–10 products | Yes (products, orders) | 2 | M3 |
+
+After Phase 1 validates with paying SMB users, we expand. Phase 2 reintroduces Portfolio (creator-focused), Blog, etc. when Creator Hub ships.
 
 ---
 
@@ -151,118 +153,94 @@ Each section component reads from `site-config.ts` so the Builder can fill conte
 
 ---
 
-## Template 2 — Portfolio
+## Template 2 — Local Business site (multi-page)
 
 ### Goal
-A personal site for creators (designers, devs, freelancers). Showcases projects.
+A multi-page site for **brick-and-mortar SMBs**: restaurant, café, salon, fitness studio, autoservis, real estate office. The visitor needs to know what you do, when you're open, where to find you, and how to contact you.
 
 ### Pages
-- **Home** — hero + about + project grid + skills + contact
-- **Project detail** (`/projects/[slug]`) — full project description with images
+- **Home** — hero + value prop + featured services + hours preview + testimonials + map
+- **About** — story + team + values
+- **Services / Menu** — list of services or menu items
+- **Gallery** — photos of the space, products, work
+- **Contact** — full opening hours, map, contact form, social links
 
-### Sections (Home)
-1. Hero (name, tagline, photo optional)
-2. About (1 paragraph + skills chips)
-3. Projects grid (3+ cards)
-4. Contact form (name, email, message → email via Resend)
+### Sections (across pages)
+- Hero (business name + tagline + primary CTA: "Reserve" or "Order" or "Visit")
+- Opening hours (full week, with "Open now" indicator)
+- Map embed (Google / Mapy.cz)
+- Services / Menu list
+- Gallery grid
+- Testimonials
+- Contact form
+- Footer with NAP (Name / Address / Phone) for local SEO
 
-### DB tables
+### DB tables (small)
 ```sql
-create table projects_data (
+create table services_data (
   id uuid primary key default gen_random_uuid(),
-  user_id uuid not null,             -- the app's owner (sites can only have 1 user, but DRY)
-  slug text unique not null,
-  title text not null,
-  description text,
-  cover_url text,
-  body_md text,
-  is_published boolean default true,
-  sort_order int default 0,
-  created_at timestamptz default now()
+  name text not null, description text, price_text text, sort_order int default 0
 );
-
+create table gallery_data (
+  id uuid primary key default gen_random_uuid(),
+  url text not null, alt text, sort_order int default 0
+);
 create table contact_messages (
   id uuid primary key default gen_random_uuid(),
-  name text not null,
-  email text not null,
-  message text not null,
+  name text not null, email text, phone text, message text not null,
   created_at timestamptz default now()
 );
 ```
 
 ### Variants
-- **Minimal** — type-led, single column
-- **Grid** — 2-column hero with photo, projects in masonry
-- **Editorial** — magazine-style, big serif headings
+- **Warm classic** — rich photography, warm palette (restaurants, cafés)
+- **Clean modern** — minimal, lots of whitespace (salons, studios, real estate)
+- **Bold local** — strong type, localized accent (autoservis, fitness)
 
 ---
 
-## Template 3 — Blog
+## Template 3 — Service Business site
+
+### Goal
+For **service providers**: coaches, consultants, freelancers, small agencies. The visitor needs to know what problem you solve, why you're trusted, and how to start a conversation.
 
 ### Pages
-- **Home** — header, posts list, sidebar (categories)
-- **Post detail** (`/posts/[slug]`)
-- **Subscribe page**
+- **Home** — hero + 3 services + how-it-works + testimonials + about strip + contact CTA
+- **Services / [slug]** — detail per service
+- **Contact** — discovery-call form
 
-### DB tables
+### Sections
+- Hero with photo + tagline + primary CTA ("Book a discovery call")
+- Services trio (icon + title + body + price-from)
+- How it works (3-step process)
+- Social proof (logos, testimonials, results)
+- About founder strip with photo
+- FAQ
+- Contact form with calendar embed
+
+### DB tables (small)
 ```sql
-create table posts (
+create table services_data (
   id uuid primary key default gen_random_uuid(),
-  slug text unique not null,
-  title text not null,
-  excerpt text,
-  body_md text,
-  cover_url text,
-  category text,
-  is_published boolean default false,
-  published_at timestamptz,
-  created_at timestamptz default now()
+  slug text unique not null, name text not null, description text,
+  price_from int, body_md text, sort_order int default 0
 );
-
-create table subscribers (
+create table contact_messages (
   id uuid primary key default gen_random_uuid(),
-  email text unique not null,
+  name text not null, email text not null, message text not null,
+  service_id uuid references services_data(id),
   created_at timestamptz default now()
 );
 ```
 
 ### Variants
-- **Magazine** — grid of cards
-- **Editorial** — single column, type-heavy
-- **Aggregator** — dense list, like Hacker News
+- **Authority** — type-led, magazine-feel, trust signals prominent
+- **Approachable** — softer palette, founder photo prominent
+- **Premium** — dark hero, gold/violet accents, polished testimonials
 
 ---
 
-## Template 4 — To-do app
-
-### Pages
-- **Sign in / sign up** (Supabase auth on the generated app's own Supabase)
-- **App** — list of todos for the signed-in user
-- **Settings**
-
-### DB tables
-```sql
-create table todos (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid not null,
-  title text not null,
-  is_done boolean default false,
-  due_at timestamptz,
-  created_at timestamptz default now()
-);
--- with RLS so each user sees only their todos
-```
-
-### Variants
-- **Simple list** — minimal, single list
-- **Project boards** — group todos by project (extra table)
-
-### Why this template matters
-First template that uses **per-app auth and DB**, so it's the test case for our isolation strategy (ADR-002).
-
----
-
-## Template 5 — Booking
+## Template 4 — Booking
 
 ### Pages
 - **Public** — service list, calendar, booking form
@@ -293,6 +271,63 @@ create table bookings (
 ### Variants
 - **Single service** (e.g., a freelancer with 1 type of consultation)
 - **Service catalog** (multi-service salon / clinic style)
+
+---
+
+## Template 5 — Shop one-pager
+
+### Goal
+For **drobní e-shopáři** with 1–10 products who want a single page that sells. Stripe Checkout out of the box. No multi-page catalog complexity, no inventory headaches. Just product cards and "Buy now".
+
+### Pages
+- **Home** — hero + 1–10 product cards + about + reviews + footer
+- **Order success** (`/success?session_id=...`) — Stripe-style thank-you
+- **Order canceled** — friendly retry
+
+### Sections
+- Hero with hero product or brand statement
+- Product grid (cards with image, title, short, price, "Buy" button → Stripe Checkout)
+- About / story (one paragraph)
+- Reviews (3 testimonials with star rating)
+- Shipping & returns (collapsible)
+- Footer with NAP + social
+
+### DB tables
+```sql
+create table products_data (
+  id uuid primary key default gen_random_uuid(),
+  slug text unique not null,
+  name text not null,
+  short_description text,
+  description_md text,
+  price_cents int not null,
+  currency text not null default 'czk',
+  stripe_price_id text,           -- created via Stripe Connect when product is added
+  cover_url text,
+  inventory int default 0,        -- nullable means unlimited
+  is_active boolean default true,
+  sort_order int default 0,
+  created_at timestamptz default now()
+);
+
+create table orders (
+  id uuid primary key default gen_random_uuid(),
+  stripe_session_id text unique,
+  customer_email text,
+  customer_name text,
+  shipping_address jsonb,
+  total_cents int not null,
+  status text not null default 'pending',  -- 'pending' | 'paid' | 'fulfilled' | 'refunded'
+  created_at timestamptz default now()
+);
+```
+
+### Variants
+- **Single product spotlight** — one hero product, big imagery
+- **Multi-product grid** — up to 10 products in a responsive grid
+
+### Why this template matters
+First template that actually **moves money for the SMB**. We use Stripe Checkout (not a custom cart) to keep it dead simple and PCI-safe. Vibell handles Stripe Connect onboarding behind the scenes — the SMB never touches a developer dashboard.
 
 ---
 

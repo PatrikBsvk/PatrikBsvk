@@ -118,17 +118,31 @@
 
 ## ⏸ On hold — explicit defer per founder
 
-Tier A items deferred per: *"na začátku ne, teď se zaměříme na budování studia produktu, pak na uživatel může prodávat..."*
+### 2026-05-06 v0.3 scope cut (founder direction)
 
-Phase ordering, founder-stated:
-1. **Studio (current)** — Wizard + Builder + Workspace + Click-to-edit + Studio Mode + Mockup Library
-2. **Marketplace + portfolio + memberships (next)** — sell apps, public profile pages, paid memberships in user apps
-3. **Polish & growth (after)** — referral, SEO, debugger, voice, etc.
+Founder narrowed Phase 1 to: *"tvorba aplikace stránek nebo onepage pro malé podnikatele"* (build apps / sites / one-pagers for small businesses).
 
-Items on hold for Phase 1 → designed in Phase 2:
-- Component Shop (A1)
-- Vibell Showcase + featured slots (A2)
-- Custom domains UI (A5) — implicit in marketplace phase
+**DEFERRED — keep in repo, not built now:**
+- D-005 GitHub sync + code export (Pro+ feature, not SMB-relevant for MVP)
+- D-008 AI SEO Assistant (post-MVP polish)
+- D-010 Continuity Coach (nice-to-have)
+- D-011 Referral / Ambassador
+- D-012 Creator Hub (profile + articles + tips + memberships)
+- D-013 Memberships in user-built apps
+- All Tier A from `ideas-backlog.md` (Component Shop, Showcase, etc.)
+
+**KEPT in Phase 1 scope (because they directly help SMBs build):**
+- D-001 Smart Autofill from URL — paste existing site → AI extracts brand, **very useful for SMBs migrating**
+- D-002 AI Debugger — retention insurance, always on
+- D-004 AI Brand Designer — most SMBs have no brand, agent generates one
+- D-006 Built-in analytics — SMBs care about traffic
+- D-007 Voice mode — if time
+- D-009 Image generation — SMBs need hero/product images
+
+### Phase order — updated 2026-05-06 v0.3
+1. **Phase 1 (now):** **SMB builder** — Wizard + Builder + Workspace + Click-to-edit + Studio Mode + Mockup Library + (D-001 D-002 D-004 D-006 D-009).
+2. **Phase 2 (later):** Marketplace, Creator Hub, memberships, referral, SEO, GitHub sync, voice, continuity coach, integrations library — only when Phase 1 has paying SMB users validated.
+3. **Phase 3 (much later):** Mobile output, team/collab, white-label, enterprise.
 
 ---
 
