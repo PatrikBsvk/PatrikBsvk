@@ -30,6 +30,7 @@ Things you CANNOT do in Smart Mode that Studio Mode allows:
 4. **Restructure the page hierarchy** (split into multiple pages, add navigation between them).
 5. **Override Tailwind classes with custom styles** (custom CSS in a scoped sheet).
 6. **Import an external library** (with safety review for security).
+7. **Open the Mockup Library** — the visual gallery of all variants, references, and explorations for this project. See `docs/design/mockup-library.md`. Studio Mode is the home of the Mockup Library; Smart Mode hides it.
 
 ---
 

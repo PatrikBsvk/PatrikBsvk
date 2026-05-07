@@ -54,6 +54,22 @@ Specialized agents over one big prompt. Each agent has narrow scope, minimal con
 - **Outputs:** Friendly text + optional action suggestion
 - **Cache:** System prompt + Coach personality cached
 
+### Memory
+- **Model:** Haiku 4.5
+- **Job:** Learns the user. Builds a Profile (cross-project) and per-project Memory. Runs as a background digest. Never user-facing directly.
+- **Inputs:** Recent agent_calls + user inputs cache + existing memory
+- **Outputs:** Updated facts (add / reinforce / drop)
+- **Runs:** Every 10 user actions OR every 15 min of active session
+- **User-visible cost:** 0 credits (we absorb — see `docs/design/memory-agent.md`)
+- **See:** `docs/design/memory-agent.md` for full spec
+
+### Studio
+- **Model:** Sonnet 4.6
+- **Job:** Layout-level changes inside Studio Mode (add/remove/reorder sections, edit JSX, custom CSS).
+- **Inputs:** Full file map + user instruction + memory context
+- **Outputs:** Updated FileMap (or diff)
+- **See:** `docs/design/studio-mode.md` for full spec, pricing, plan gating
+
 ## Token-saving rules (mandatory)
 
 1. **Prompt caching always on** — system prompts + templates + existing schema all cached.
@@ -62,6 +78,7 @@ Specialized agents over one big prompt. Each agent has narrow scope, minimal con
 4. **Cached scaffolds** — common wizard outputs are memoized in DB; if same wizard combo seen before, return cached scaffold.
 5. **Cheap-first model** — start with Haiku, escalate to Sonnet only if needed.
 6. **Hard timeouts** — every agent call has 30s timeout; runaway calls killed.
+7. **Memory injection is free** — Memory Agent's profile + project memory are loaded as cached system blocks for every other agent's call. Cache_read tokens are ~90 % cheaper than fresh input, so personalization comes at near-zero marginal cost.
 
 ## Implementation guidelines
 
