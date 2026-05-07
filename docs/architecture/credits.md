@@ -38,6 +38,24 @@ Predictable pricing for users + protection against runaway API costs for Vibell.
 | Custom CSS | 5 | $0.07 |
 | Add custom page | 15 | $0.22 |
 
+### New approved actions (decisions batch 2026-05, see `decisions-log.md`)
+| Action | Credits | Internal cost (USD, est.) | Plan note |
+|---|---|---|---|
+| Smart Autofill from URL (D-001) | 3 | $0.05 | all plans |
+| AI Debugger fix (D-002) | **0** | ~$0.10 (Vibell eats) | all plans, retention play |
+| Integration setup, e.g. Stripe / Calendly (D-003) | 5–10 | $0.07–$0.15 | all plans |
+| AI Brand Designer full bible (D-004) | 15–20 (TBD) | ~$0.40 (incl. image gen) | all plans |
+| Code export zip (D-005) | 0 | tiny | **Pro+** only |
+| GitHub bidirectional sync (D-005) | 0 monthly | included | **Pro+** only |
+| Publish analytics (tracking) (D-006) | 0 | $0.02/mo per app | all plans |
+| Publish analytics AI audit (D-006) | 3 | $0.04 | Pro+ free monthly |
+| Voice transcription / minute (D-007) | 0 | $0.005/min (Vibell eats) | **all plans** |
+| AI SEO audit (D-008) | 5 | $0.07 | Pro+ free monthly |
+| Image generation, 1 image (D-009) | 8 | $0.10 | Pro+ 20% discount |
+| Continuity Coach suggestion (D-010) | 0 | $0.001 | all plans, background |
+| Memberships setup in user app (D-012, pending) | 10 | $0.15 | all plans |
+| Vibell platform fee on Memberships MRR (D-012) | n/a | n/a | 7–15 % per plan tier |
+
 ### Plan-level Studio access
 - Free: 3 Studio edits free, then locked
 - Basic: 10 Studio edits/month included

@@ -70,6 +70,73 @@ Specialized agents over one big prompt. Each agent has narrow scope, minimal con
 - **Outputs:** Updated FileMap (or diff)
 - **See:** `docs/design/studio-mode.md` for full spec, pricing, plan gating
 
+### Brand Designer
+- **Model:** Sonnet 4.6 + image generation
+- **Job:** Generates a complete brand bible (logo, color system, typography, voice samples) from one description, applies across project.
+- **Cost:** ~15–20 credits (TBD)
+- **See:** D-004 in `docs/product/decisions-log.md` (design doc pending)
+
+### Extractor (Smart Autofill)
+- **Model:** Haiku 4.5 + headless screenshot
+- **Job:** Given a URL, extract logo, palette, copy, tone, brand assets and pre-fill the wizard.
+- **Cost:** 3 credits
+- **See:** D-001
+
+### Debugger
+- **Model:** Sonnet 4.6
+- **Job:** Reads build/preview/publish errors → proposes fix → optionally applies.
+- **Cost:** **0 credits** for user (Vibell absorbs — retention play)
+- **See:** D-002
+
+### Integrations
+- **Model:** Sonnet 4.6
+- **Job:** Wires up third-party integrations (Stripe, Calendly, Mailchimp, …) in user apps. Validates API keys, scaffolds components, runs smoke tests.
+- **Cost:** 5–10 credits per integration setup (per integration spec)
+- **See:** D-003
+
+### Analytics
+- **Model:** Haiku 4.5
+- **Job:** Audits published apps' real metrics, suggests UI/copy improvements based on data.
+- **Cost:** 0 credits for tracking, 3 credits per AI audit
+- **See:** D-006
+
+### SEO
+- **Model:** Haiku 4.5
+- **Job:** Audits published apps for SEO, suggests one-click fixes (meta, alt text, schema).
+- **Cost:** 5 credits per audit
+- **See:** D-008
+
+### Image
+- **Model:** External image API (Anthropic image gen or Flux)
+- **Job:** Generates branded hero images, illustrations, mocks, locked to project palette/tone.
+- **Cost:** 8 credits per image (paid by user)
+- **See:** D-009
+
+### Continuity (Coach extension)
+- **Model:** Haiku 4.5
+- **Job:** On dashboard / project return, proactively suggests next steps based on project state + Memory.
+- **Cost:** 0 credits (background)
+- **See:** D-010
+
+### Voice
+- **Model:** Speech-to-text (Whisper-class) → existing agents (Coach, UI Editor, etc.)
+- **Job:** Transcribe user voice across the workspace; pipe to the appropriate agent.
+- **Cost:** 0 credits for user (Vibell absorbs ~$0.005/min)
+- **Plan:** available on **all plans** (founder direction, D-007)
+- **See:** D-007
+
+### Creator Hub Membership (D-012 confirmed)
+- **Model:** Sonnet 4.6
+- **Job:** Sets up creator's own paid membership on their Vibell profile (`vibell.app/@username`). Wires Stripe Connect, creates tiers, gates articles/tips by tier, manages follower roles.
+- **Cost:** 10 credits per setup. Vibell takes 7–15 % platform fee on creator's membership MRR (per plan tier).
+- **See:** D-012 in decisions-log
+
+### Article Writer (assists creator hub content)
+- **Model:** Sonnet 4.6
+- **Job:** Drafts long-form articles for the Creator Hub from a topic + project context + memory. Optional, the creator can write from scratch.
+- **Cost:** 2 credits per draft
+- **See:** D-012 (Creator Hub)
+
 ## Token-saving rules (mandatory)
 
 1. **Prompt caching always on** — system prompts + templates + existing schema all cached.

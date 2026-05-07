@@ -113,16 +113,34 @@
 
 ---
 
-## 9. Otevřené produktové vize, které zmínil
+## 9. Otevřené produktové vize, které zmínil — schválená batch #1 (2026-05-06)
+
+Plný přehled rozhodnutí v `docs/product/decisions-log.md`. Klíčové:
 
 - Memory Agent který se ho učí (consent-based) — **rozhodnuto**
-- Marketplace + creator portfolio (`vibell.app/@username`, revenue share) — **rozhodnuto**
+- Marketplace + creator portfolio + **Creator Hub** (vlastní profil tvůrce s články, tipy, paid membership na `vibell.app/@username`) — **rozhodnuto**, Substack/Patreon model uvnitř Vibell, platform fee 7–15 % per plan tier
 - Studio Mode s mockup library + full-app view — **rozhodnuto**
-- Postupně se rozhodne kdo platí: free 50, basic 200, standard 1000, pro 3000 kreditů
+- **AI Brand Designer** — generuje totální brand bible, na které stojí appka — **rozhodnuto**
+- **Smart Autofill from URL** — vlepí web/LinkedIn → AI předvyplní wizard — **rozhodnuto**
+- **AI Debugger** — opravuje build errory, **uživatel neplatí** — **rozhodnuto**
+- **Pre-built integrations** (Stripe, Calendly, Mailchimp, …) — **rozhodnuto**
+- **Code export + GitHub sync** — **jen Pro+**, bidirectional — **rozhodnuto**
+- **Built-in publish analytics** — automaticky postaví, sledování u nás — **rozhodnuto**
+- **Voice mode** — pro **všechny plány zdarma** — **rozhodnuto**
+- **AI SEO assistant** — **rozhodnuto**
+- **AI Image generation** — uživatel platí — **rozhodnuto**
+- **Continuity Coach** — vede uživatele kde má pokračovat když neví — **rozhodnuto**
+- **Referral / Ambassador** — 10 % z paid membership lifetime, nováček +100 free kreditů — **rozhodnuto**
+- Postupně rozhodnuté kreditní plány: free 50, basic 200, standard 1000, pro 3000, team 9000
 - Eventually mobile output (phase 3)
 - Eventually team plán s kolaborací (3× ceny pro jednotlivce + týmová cena)
 - Konkurenti, proti kterým se vymezuje: **base44** (primárně), Lovable, Bolt, v0
 - Cílový trh: **EN globálně primárně, CZ/SK sekundárně**
+
+### Fázování (founder-stated)
+1. **Phase 1 (now):** Studio produkt — Wizard, Builder, Workspace, Click-to-edit, Studio Mode, Mockup Library
+2. **Phase 2:** Creator Hub + Marketplace + memberships, Brand Designer, Autofill, Debugger, Analytics, Integrations
+3. **Phase 3:** Referral, Voice, SEO, Image gen, GitHub sync, Continuity Coach
 
 ---
 
@@ -152,3 +170,4 @@
 ## 12. Updates log
 
 - **2026-05-06 v0.1** — soubor založen. Zachycuje pozorování z prvních 7 PM↔founder kol (vize, brand, Studio Mode, Memory Agent, Mockup Library, Patrikův styl).
+- **2026-05-06 v0.2** — strategická rozhodnutí batch #1 (D-001 až D-013). Schváleno: Smart Autofill, AI Debugger (free for user), Pre-built integrations, AI Brand Designer (totální brand bible), Code export + GitHub sync (Pro+ only), Built-in analytics (free), Voice mode (free for all plans), AI SEO, Image gen (user pays), Continuity Coach, Referral 10 % lifetime + 100 credits onboarding bonus, Creator Hub (Substack/Patreon model na profilu tvůrce). Memberships uvnitř user-buildovaných appek (D-013) deferred. Detail v `docs/product/decisions-log.md`. Patrikův styl potvrzen: vize big, detail deleguje, koriguje rychle a přesně když si špatně vyložím (D-012 → Creator Hub).
