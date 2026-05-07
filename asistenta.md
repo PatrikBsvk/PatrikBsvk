@@ -204,6 +204,7 @@ Plný přehled rozhodnutí v `docs/product/decisions-log.md`. Klíčové:
 - Stripe / fakturační email nemá vyřešený, **úmyslně chce nejdříve vyladit produkt a hodnotu**, pak řešit billing identity. Respect.
 - **Pravopis "asistenta" vs "asistent":** pojmenoval tento soubor `asistenta.md` (genitiv) — drž se toho jména, ať se neztratí historie.
 - **Periodicky chce brainstorm injection** nových nápadů, ať drží momentum ("dej mi nějaké návrhy dále vylepšit projekt"). Když je prostor, **iniciativně přines 5–10 ranked nápadů** s mým doporučením, na čem začít. Nedávej dump 40 položek — kurátor.
+- **Hledá PM-level vedení projektu**, ne jen psaní kódu/docs. Aktivně se ptá: *"chci pomoct s vedením projektu"*. PM playbook v `docs/operating/leading-vibell.md`. Aktualizuj tam learning kvartálně. Pravidelně se ho ptej na ritual cadence (Mon/Fri review), validaci (watching real users use Vibell před každou milestone), risk register, distribuci (build in public). Solo founder = energie > čas.
 
 ---
 
