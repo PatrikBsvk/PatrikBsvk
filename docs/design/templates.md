@@ -5,19 +5,19 @@
 
 ---
 
-## Template registry — SMB MVP set (5 templates)
+## Template registry — Phase 1 MVP set (5 templates)
 
-> **Scope decision (2026-05-06):** All templates serve **small business owners**. To-do and Blog templates are DEFERRED out of MVP. Replaced with templates SMBs actually need: Local Business, Service Business, Shop one-pager.
+> **Scope (2026-05-06 v0.4):** Templates serve **non-programmers with a vision who want to build an app or website**. Audience is broad (drobní podnikatelé, creators, freelancers, students, hobbyists, indie hackers). Output is narrow (web / one-pager / simple app). Universal templates over niche-specific ones — keep options open for any vision.
 
 | ID | Name | Best for | DB needed | Variants | First built |
 |---|---|---|---|---|---|
-| `landing` | Landing page (one-pager) | Launching a service or product | No | 3 | **Yes (M2)** |
-| `local-business` | Local business site (multi-page) | Restaurant, café, salon, gym, autoservis, real estate | Yes (small — hours, gallery, contact) | 3 | M2 |
-| `service-business` | Service business site | Coach, consultant, freelancer, agency | Yes (services, testimonials) | 3 | M3 |
-| `booking` | Booking system | Salon, fitness, coach, advisory — anything time-slot based | Yes | 2 | M3 |
-| `shop-onepager` | Simple shop one-pager | Drobní e-shopáři with 1–10 products | Yes (products, orders) | 2 | M3 |
+| `landing` | Landing page (one-pager) | Launching anything: product, service, idea, event, cause | No | 3 | **Yes (M2)** |
+| `multi-page` | Multi-page website | Anyone needing more than one page (about, services, contact, FAQ, gallery, hours, location) | Yes (small — content, contact messages) | 3 | M2 |
+| `portfolio` | Portfolio | Designers, photographers, writers, freelancers, students showing work | Yes (small — projects, contact) | 3 | M3 |
+| `booking` | Booking | Coaches, salons, fitness, advisory — anyone time-slot based | Yes | 2 | M3 |
+| `shop-onepager` | Shop one-pager | Selling 1–10 products with Stripe Checkout | Yes (products, orders) | 2 | M3 |
 
-After Phase 1 validates with paying SMB users, we expand. Phase 2 reintroduces Portfolio (creator-focused), Blog, etc. when Creator Hub ships.
+After Phase 1 validates with paying users, we expand. Phase 2 reintroduces niche templates (Local Business, Service Business, Blog, etc.) and adds simple-app templates (auth+CRUD, dashboards) when Creator Hub ships.
 
 ---
 
@@ -153,37 +153,46 @@ Each section component reads from `site-config.ts` so the Builder can fill conte
 
 ---
 
-## Template 2 — Local Business site (multi-page)
+## Template 2 — Multi-page website
 
 ### Goal
-A multi-page site for **brick-and-mortar SMBs**: restaurant, café, salon, fitness studio, autoservis, real estate office. The visitor needs to know what you do, when you're open, where to find you, and how to contact you.
+A flexible **multi-page site** for anyone whose vision needs more than a single page. Universal — works for a small business, a side project, a community, an event, a portfolio expansion, an artist's site, a non-profit. The Builder chooses which pages to scaffold based on the wizard answers.
 
-### Pages
-- **Home** — hero + value prop + featured services + hours preview + testimonials + map
-- **About** — story + team + values
-- **Services / Menu** — list of services or menu items
-- **Gallery** — photos of the space, products, work
-- **Contact** — full opening hours, map, contact form, social links
+### Pages (Builder picks 3–6 from)
+- **Home** — hero + featured content + CTA
+- **About** — story / mission / team
+- **Services / Offerings / Menu** — list of what's offered
+- **Work / Gallery / Cases** — visual showcase
+- **Contact** — form + location/map (optional) + hours (optional)
+- **FAQ** — common questions
+- **Pricing** — if applicable
+- **Blog index + post detail** — only if user explicitly enables blogging in wizard
 
-### Sections (across pages)
-- Hero (business name + tagline + primary CTA: "Reserve" or "Order" or "Visit")
-- Opening hours (full week, with "Open now" indicator)
-- Map embed (Google / Mapy.cz)
-- Services / Menu list
-- Gallery grid
-- Testimonials
-- Contact form
-- Footer with NAP (Name / Address / Phone) for local SEO
+### Configurable modules (turned on/off per project)
+- Opening hours block (with "open now" indicator) — for places visitors physically visit
+- Map embed (Google / Mapy.cz / OpenStreetMap)
+- Newsletter signup → Resend audience
+- Contact form → email via Resend
+- Social links footer
 
-### DB tables (small)
+### DB tables (small, generic)
 ```sql
-create table services_data (
+create table content_pages (
   id uuid primary key default gen_random_uuid(),
-  name text not null, description text, price_text text, sort_order int default 0
+  slug text unique not null,
+  title text not null,
+  body_md text,
+  is_published boolean default true,
+  sort_order int default 0,
+  created_at timestamptz default now()
 );
-create table gallery_data (
+create table content_items (
   id uuid primary key default gen_random_uuid(),
-  url text not null, alt text, sort_order int default 0
+  collection text not null,         -- 'services' | 'gallery' | 'team' | …
+  data jsonb not null,              -- flexible per collection
+  sort_order int default 0,
+  is_published boolean default true,
+  created_at timestamptz default now()
 );
 create table contact_messages (
   id uuid primary key default gen_random_uuid(),
@@ -193,50 +202,54 @@ create table contact_messages (
 ```
 
 ### Variants
-- **Warm classic** — rich photography, warm palette (restaurants, cafés)
-- **Clean modern** — minimal, lots of whitespace (salons, studios, real estate)
-- **Bold local** — strong type, localized accent (autoservis, fitness)
+- **Editorial** — type-led, magazine feel
+- **Clean** — minimal, generous whitespace
+- **Warm** — rich imagery, warm palette
 
 ---
 
-## Template 3 — Service Business site
+## Template 3 — Portfolio
 
 ### Goal
-For **service providers**: coaches, consultants, freelancers, small agencies. The visitor needs to know what problem you solve, why you're trusted, and how to start a conversation.
+A **personal site for someone showing work** — designers, photographers, writers, developers, students, hobby creators, freelancers. Single primary purpose: visitors leave thinking "this person is great, I want to talk to them".
 
 ### Pages
-- **Home** — hero + 3 services + how-it-works + testimonials + about strip + contact CTA
-- **Services / [slug]** — detail per service
-- **Contact** — discovery-call form
+- **Home** — hero + featured projects + about strip + contact CTA
+- **Project detail** (`/work/[slug]`) — full project with images, description, links
 
-### Sections
-- Hero with photo + tagline + primary CTA ("Book a discovery call")
-- Services trio (icon + title + body + price-from)
-- How it works (3-step process)
-- Social proof (logos, testimonials, results)
-- About founder strip with photo
-- FAQ
-- Contact form with calendar embed
+### Sections (Home)
+- Hero (name, tagline, optional photo)
+- Featured work grid (3–9 items)
+- About strip (1 paragraph + skills/tools chips)
+- Contact form OR direct email/social links
 
 ### DB tables (small)
 ```sql
-create table services_data (
+create table portfolio_projects (
   id uuid primary key default gen_random_uuid(),
-  slug text unique not null, name text not null, description text,
-  price_from int, body_md text, sort_order int default 0
+  slug text unique not null,
+  title text not null,
+  short_description text,
+  body_md text,
+  cover_url text,
+  links jsonb default '[]'::jsonb,        -- [{ label, url }]
+  tags text[] default '{}',
+  is_published boolean default true,
+  sort_order int default 0,
+  created_at timestamptz default now()
 );
+
 create table contact_messages (
   id uuid primary key default gen_random_uuid(),
   name text not null, email text not null, message text not null,
-  service_id uuid references services_data(id),
   created_at timestamptz default now()
 );
 ```
 
 ### Variants
-- **Authority** — type-led, magazine-feel, trust signals prominent
-- **Approachable** — softer palette, founder photo prominent
-- **Premium** — dark hero, gold/violet accents, polished testimonials
+- **Minimal** — type-led, single column, big whitespace
+- **Grid** — projects in masonry, photo prominent
+- **Editorial** — magazine-style, big serif headings
 
 ---
 

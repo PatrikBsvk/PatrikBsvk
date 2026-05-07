@@ -40,34 +40,43 @@
 
 ## 4. Brand & produkt canon — **nikdy neporušuj**
 
-### 🎯 Aktuální scope (strict — 2026-05-06 v0.3)
+### 🎯 Aktuální scope (strict — 2026-05-06 v0.4)
 
-**Phase 1 dnes = builder pro malé podnikatele.** Vibell aktuálně dělá *jednu věc dobře*: pomáhá malému podnikateli vytvořit **aplikaci, web, nebo onepager** pro jejich byznys. Žádný marketplace, žádný creator hub, žádné memberships, žádný social network — to vše je **odložené**, ne zrušené.
+**Primární zákazník (north star):** **neprogramátor, který má vizi a chce postavit aplikaci nebo web.** Patrik to formuloval takto: *"my mu to chceme jednoduše umožnit, pomoct a navést k úspěchu"*.
 
-**Cílový uživatel zúžen:**
-- Restaurace, kavárny, bistra
+**Tři klíčová slova:**
+1. **Umožnit** — odstranit technické překážky (kód, DevOps, hosting, billing infra)
+2. **Pomoct** — agenti dělají těžkou práci za uživatele
+3. **Navést** — strukturovaný průvodce + Coach + Continuity vede uživatele krok za krokem k cíli
+
+**Cílový uživatel je široký** (záměrně) — kdokoli neprogramátor s nápadem:
+- Drobní podnikatelé (restaurace, kosmetičky, fitness, real estate, autoservis…)
 - Coach / consultant / freelancer
-- Lokální služby (kosmetika, fitness, holičství, autoservis, real estate)
-- Drobní e-shopáři (one-page checkout)
-- Solo tvůrci s portfoliem (designéři, fotografové)
+- Solo tvůrci (designéři, fotografové, autoři, hudebníci)
+- Studenti se side projecty
+- Hobby tvůrci, makers, indie hackers
+- Solo founders, kteří chtějí MVP rychle
+- Drobní e-shopáři
 
-**Cílový výstup zúžen:**
-- Onepager (landing pro službu / produkt)
-- Multi-page site (home / about / services / contact)
-- Bookable site (rezervační systém)
+**Cílový výstup je úzký** (vědomě):
+- Onepager (landing pro službu / produkt / nápad)
+- Multi-page site (home / about / contact / cokoli)
+- Portfolio (showcase práce)
+- Booking site (rezervační systém)
 - Shop one-pager (jednoduchý e-shop se Stripe checkoutem)
 
-**Neudělat aktuálně:**
-- Marketplace prodej appek
+**Co Vibell nyní NEDĚLÁ** (DEFERRED, ne zrušeno):
+- Marketplace prodeje appek
 - Creator Hub (vlastní profil tvůrce, články, tipy, paid membership)
 - Memberships uvnitř user-buildovaných appek
-- Referral / Ambassador
+- Referral / Ambassador program
 - Component shop
 - Public showcases
 - Multi-user / kolaborace
 - Mobile app output
+- GitHub sync (Pro+ later)
 
-Decisions z `docs/product/decisions-log.md` jsou rozdělené do fází; Phase 1 zachovává jen **D-001 (Smart Autofill), D-002 (AI Debugger), D-004 (AI Brand Designer), D-006 (Analytics), D-007 (Voice — pokud čas), D-009 (Image gen)**. Vše ostatní = **DEFERRED**.
+Decisions z `docs/product/decisions-log.md` jsou rozdělené do fází; **Phase 1 zachovává**: D-001 (Smart Autofill), D-002 (AI Debugger), D-004 (AI Brand Designer), D-006 (Analytics), D-007 (Voice — pokud čas), D-009 (Image gen). Vše ostatní = **DEFERRED**.
 
 ---
 
@@ -203,3 +212,4 @@ Plný přehled rozhodnutí v `docs/product/decisions-log.md`. Klíčové:
 - **2026-05-06 v0.1** — soubor založen. Zachycuje pozorování z prvních 7 PM↔founder kol (vize, brand, Studio Mode, Memory Agent, Mockup Library, Patrikův styl).
 - **2026-05-06 v0.2** — strategická rozhodnutí batch #1 (D-001 až D-013). Schváleno: Smart Autofill, AI Debugger (free for user), Pre-built integrations, AI Brand Designer (totální brand bible), Code export + GitHub sync (Pro+ only), Built-in analytics (free), Voice mode (free for all plans), AI SEO, Image gen (user pays), Continuity Coach, Referral 10 % lifetime + 100 credits onboarding bonus, Creator Hub (Substack/Patreon model na profilu tvůrce). Memberships uvnitř user-buildovaných appek (D-013) deferred. Detail v `docs/product/decisions-log.md`. Patrikův styl potvrzen: vize big, detail deleguje, koriguje rychle a přesně když si špatně vyložím (D-012 → Creator Hub).
 - **2026-05-06 v0.3** — **scope cut**. Patrik zúžil Fázi 1 na *"tvorba aplikace stránek nebo onepage pro malé podnikatele"*. Creator Hub / memberships / marketplace / referral atd. = DEFERRED (ne zrušeno). Šablony refactor: Landing, Local Business, Service Business, Booking, Shop one-pager. To-do + Blog šablona = vyřazeno z MVP. Patrikův styl: **velmi rád se vrací a zužuje scope** když cítí, že rozsah nabírá. To je ZDRAVÉ — PM by měl tendenci scope nafukovat aktivně potvrzovat *"přidat tohle teď, nebo později?"* na každém větším pomyšlení.
+- **2026-05-06 v0.4** — **persona oprava**. PM se v0.3 přehnaně zúžil na "small businesses". Patrik upřesnil: *"náš primární zákazník je neprogramátor, který má vizi a chce postavit aplikaci nebo web a my mu to chceme jednoduše umožnit, pomoct a navést k úspěchu"*. Persona je široká (kdokoli neprogramátor s nápadem), výstup zůstává úzký (web/app/onepager). Šablony broadened: Landing, Multi-page site, Portfolio, Booking, Shop. Lekce pro PM: **Patrik mluví o segmentech jako příkladech, ne o exclusivních cílovkách.** Když řekne "small business", myslí "small entrepreneur / hobby creator / solo person s nápadem", ne striktně registered business.

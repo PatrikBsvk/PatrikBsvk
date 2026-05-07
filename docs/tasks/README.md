@@ -15,9 +15,11 @@ Each task is a self-contained `.md` file with everything a coding agent needs:
 - **Agent Prompt** — copy-paste this into your local Claude Code
 - Definition of Done
 
-## Phase 1 scope (2026-05-06 v0.3 — founder direction)
+## Phase 1 scope (2026-05-06 v0.4 — founder direction)
 
-**Vibell = builder for small business owners.** Phase 1 ships the Studio product end-to-end — wizard, builder, workspace, click-to-edit, Studio Mode, mockup library, deploy — with 5 SMB-focused templates (Landing, Local Business, Service Business, Booking, Shop one-pager).
+**Vibell = guided builder for non-programmers with a vision.** Primary user is anyone non-technical with an idea who wants to build an app or website. Vibell **enables, helps, and guides them to success.** Audience is broad (small entrepreneurs, creators, freelancers, students, hobbyists, indie hackers); output is narrow (web / one-pager / simple app).
+
+Phase 1 ships the Studio product end-to-end — wizard, builder, workspace, click-to-edit, Studio Mode, mockup library, deploy — with 5 universal templates: Landing, Multi-page site, Portfolio, Booking, Shop one-pager.
 
 Marketplace, Creator Hub, memberships, referral, GitHub sync, multi-user — all DEFERRED to Phase 2+.
 
